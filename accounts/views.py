@@ -51,11 +51,11 @@ def login(request):
     else:                                # 1B
         return render(request, 'accounts/login.html')
 
-
 '''
-
+1. Logout must be POST
+2. Logout the user and redirect to home
 '''
 def logout(request):
     if request.method == 'POST':
         auth.logout(request)
-        return redirect('home') 
+        return redirect('home')

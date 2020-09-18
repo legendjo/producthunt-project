@@ -52,16 +52,32 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
+          <!--
+           1. Check if an authentiated user is already logged on
+           3. Creae a hidden Logout form
+           2. Diplay Logout and use javascript to fetch the form if [logout]
+
+          -->
           <ul class="navbar-nav ml-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="javascript:{document.getElementById('logout').submit()}" >Logout</a>
+              <form id="logout" action="{% url 'logout' %}" method="POST" >
+                  {% csrf_token %}
+                  <input type="hidden" />
+              </form>
+            </li>
+
+            {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'signup' %}">Sign Up </a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="{% url 'login' %}">Login</a>
             </li>
+            {% endif %}
           </ul>
         </div>
-
         </div>
       </nav>
      </header>
