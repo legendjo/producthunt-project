@@ -51,7 +51,7 @@ def details(request, product_id):
     productDetails = get_object_or_404(Product, pk=product_id) #Gets the object from DB
     return render(request, 'products/details.html', {'productDetails':productDetails})
 
-@login_required
+@login_required(login_url="/accounts/signup")
 def upvote(request, product_id):
     if request.method == 'POST':
         productToUpVote = get_object_or_404(Product, pk=product_id)
