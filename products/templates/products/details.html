@@ -17,7 +17,7 @@
     <img src="{{ productDetails.image.url }}" class="img-fluid" />
   </div>
   <div class="col-4">
-    <a href="{{ productDetails.url }}">
+    <a href="javascript:{document.getElementById('upvote').submit()}">
       <button class="btn btn-primary btn-lg btn-block">
         <span class="oi oi-thumb-up"></span> Upvote {{ productDetails.votesTotal }}
       </button>
@@ -39,5 +39,10 @@
     <p>{{ productDetails.body }}</p>
   </div>
 </div>
+
+<form id="upvote" action="{% url 'upvote' productDetails.id %}" method="POST">
+  {% csrf_token %}
+  <input type="hidden" />
+</form>
 
 {% endblock %}
