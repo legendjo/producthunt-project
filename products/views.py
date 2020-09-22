@@ -5,7 +5,8 @@ from django.utils import timezone
 
 # Create your views here.
 def home(request):
-    return render(request, 'products/home.html')
+    allProducts = Product.objects.all()
+    return render(request, 'products/home.html', {'allProducts':allProducts})
 
 '''
 1A-Check if a POST request i.e user want to create products
